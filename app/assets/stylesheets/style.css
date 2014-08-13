@@ -42,7 +42,7 @@ body{
   height: 100%;
   width: 100%;
   z-index: 0;
-  background: transparent url(../images/loading.gif) no-repeat center center;
+  background: transparent url(/assets/loading.gif) no-repeat center center;
   overflow: hidden;
 }
 

@@ -1,14 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Intermeetiate</title>
+  <title>interMEETiate</title>
+
+  <!-- CSS -->
   <%= stylesheet_link_tag    'application', media: 'all' %>
+  <link href='http://fonts.googleapis.com/css?family=Alegreya+Sans+SC:400,500italic' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
+  <!-- JavaScript -->
+ <!--  // <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBe1AdZQtoOdFvRC5IWoUo_C4F8nqw_QdU"></script> -->
+  
   <%= javascript_include_tag 'application' %>
+
+  <!-- Meta -->
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=none">
 </head>
 <body>
+	<header>
+		<div id="logo">
+			<h1>interMEETiate</h1>
+			<p>meet in the middle</p>
+		</div>
+	</header>
 
-<%= yield %>
+	<div id="wrapper">
+		<%= yield %>
+	</div>
 
+	<footer>
+		<nav>
+			<ul>
+				<li class="leftfooter">&copy; Daniel Barabander</a>
+		<!-- 		<li class="rightfooter"><a href="#">About</a></li>
+				<li class="rightfooter"><a href="#">Team</a></li>
+				<li class="rightfooter"><a href="#">Contact</a></li>
+				<li class="rightfooter"><a href="#">Terms</a></li> -->
+			</ul>
+		</nav>
+	</footer>
 </body>
 </html>
