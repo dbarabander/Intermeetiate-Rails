@@ -19,6 +19,7 @@
 
 var map;
 var service;
+var currentLocation;
 
 function initialize() {
   var address1 = [];
@@ -36,7 +37,7 @@ function initialize() {
   // Try HTML5 geolocation
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
-      var currentLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+      currentLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
      //  var marker = new google.maps.Marker({
      //    position: pos,
      //    map: map,
@@ -55,7 +56,7 @@ function initialize() {
   function recenter(position){
     var position_lat = position.lat();
     var position_long = position.lng();
-    var latLng = new google.maps.LatLng(position_lat, position_long);
+    var latLng = new google.maps.LatLng(position_lat, position_long-.02);
     map.panTo(latLng);
   }
 
@@ -106,7 +107,7 @@ function initialize() {
 
     // if ($('#currentLocation').is(':checked')){
 
-    //       console.log(currentLocation)
+          console.log(currentLocation)
     // } 
 
     // else{
@@ -171,7 +172,6 @@ function initialize() {
     }
 
     function getMidPoint(first_hash, second_hash) {
-      console.log(first_hash);
       var lat1 = first_hash.lat();
       var long1 = first_hash.lng();
       var lat2 = second_hash.lat();
