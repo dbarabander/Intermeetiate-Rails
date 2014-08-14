@@ -36,14 +36,14 @@ function initialize() {
   // Try HTML5 geolocation
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
-      var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-      var marker = new google.maps.Marker({
-        position: pos,
-        map: map,
-        icon: '/assets/letter_a.png'
-   		 });
-      marker.setMap(map);
-      map.setCenter(pos);
+      var currentLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+     //  var marker = new google.maps.Marker({
+     //    position: pos,
+     //    map: map,
+     //    icon: '/assets/letter_a.png'
+   		// });
+     //  marker.setMap(map);
+      map.setCenter(currentLocation);
     }, function() {
       handleNoGeolocation(true);
     });
@@ -52,15 +52,17 @@ function initialize() {
     handleNoGeolocation(false);
   };
 
+  function recenter(position){
+    var position_lat = position.lat();
+    var position_long = position.lng();
+    map.panTo(latLng);
+  }
+
 
   $('#what_do').keypress(function(e) {
     if (e.which == 13) {
       $('#search').click();
     }
-  });
-
-  $('#logo').click(function() {
-    document.location.href = "../index.html";
   });
 
 
@@ -73,17 +75,18 @@ function initialize() {
 
   $('ul').on('click', 'li', function() {
     var position = $(this).data('position');
-    map.panTo(position);
+    recenter(position);
+
   });
+
 
   $('ul').on('mouseover', 'li', function() {
     var markerId = $(this).attr('id');
     var marker = markers[markerId];
-    marker.setIcon("assets/letter_a.png");
+    marker.setIcon("assets/point.png");
     marker.setVisible(true)
   });
 
-  //i can get rid of funciton now? remove marker? yea
   $('ul').on('mouseout','li', function() {
     var markerId = $(this).attr('id');
 	  var marker = markers[markerId];
@@ -100,9 +103,19 @@ function initialize() {
     //slides in the results when the leftcontainer finishes sliding out
   	$('#results').show();
 
-    //plot the two locations
+    // if ($('#currentLocation').is(':checked')){
+
+    //       console.log(currentLocation)
+    // } 
+
+    // else{
     var address1Val = $("#location_one").val(); 
+    // }          
+
+    //plot the two locations
+    
     var address2Val = $("#location_two").val(); 
+
 
     if ($('#searchdiv').hasClass('edit')){
       $('#results li').remove();
@@ -146,6 +159,7 @@ function initialize() {
     var first_complete_lat_long_hash = {};
     var second_complete_lat_long_hash = {};
 
+
     function checkForBothLocations(lat_long_hash) {
       if ($.isEmptyObject(first_complete_lat_long_hash)) {
         first_complete_lat_long_hash = lat_long_hash;
@@ -156,25 +170,26 @@ function initialize() {
     }
 
     function getMidPoint(first_hash, second_hash) {
-      lat1 = first_hash.lat();
-      long1 = first_hash.lng();
-      lat2 = second_hash.lat();
-      long2 = second_hash.lng();
-      midPointLat = (parseFloat(lat1) + parseFloat(lat2))/2;
-      midPointLong = (parseFloat(long1) + parseFloat(long2))/2;
+      console.log(first_hash);
+      var lat1 = first_hash.lat();
+      var long1 = first_hash.lng();
+      var lat2 = second_hash.lat();
+      var long2 = second_hash.lng();
+      var midPointLat = (parseFloat(lat1) + parseFloat(lat2))/2;
+      var midPointLong = (parseFloat(long1) + parseFloat(long2))/2;
       var midPoint = new google.maps.LatLng(midPointLat,midPointLong);
       drawMidPoint(midPoint);
       getMidPointVenues(midPoint);
     }
 
     function drawMidPoint(midPoint){
-      var image = '/assets/letter_m.png';
+      var image = '/assets/midpoint.png';
       var marker = new google.maps.Marker({
         position: midPoint,
         map: map,
         icon: image
       });
-      map.panTo(midPoint);
+      recenter(midPoint);
       map.setZoom(14);
       midPointArray.push(marker);
     }
@@ -219,13 +234,15 @@ function initialize() {
       images.push(image);
 
       google.maps.event.addListener(marker, 'mouseover', function() {
-        marker.setIcon("/assets/letter_a.png");
+        marker.setIcon("/assets/point.png");
       });
 
       google.maps.event.addListener(marker, 'mouseout', function() {
         marker.setIcon(image);
       });
     }
+
+   
 
     function createList(place, i, results) {
       var name = $('<div class ="name">' + place['name'] + '</div>');
@@ -271,6 +288,8 @@ function initialize() {
         marker.setVisible(false);
       }
     }
+
+
   });
 }
 

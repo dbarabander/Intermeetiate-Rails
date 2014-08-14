@@ -72,7 +72,7 @@ footer ul{
 #search{
   width: 120px;
   height: 40px;
-  top: 200px;
+  top: 210px;
   left: 180px;
   z-index: 2;
   background-color: RGBA(255, 132, 92, .9);
@@ -158,24 +158,26 @@ input{
 /*#location_one{
   left: 100px;
   top: -60px;
-}
+}*/
 
 #location_two{
-  left: 100px;
-  top: -20px;
+  /*left: 100px;
+  top: -20px;*/
+  margin-top: 5px;
 }
 
-#what_do{
-  left: 100px;
-  top: 20px;
-}
+/*#what_do{*/
+/*  left: 100px;
+  top: 20px;*/
+/*margin-top: 30px;
+*/}
     
    
 #searchboxes{
   z-index: 1;
   top : 200px;
   position: absolute; 
-}*/
+}
 
 #what_do:focus {
   border-color: #4d90fe;
@@ -362,7 +364,16 @@ background-color: RGBA(255, 132, 92, 1);
   position: absolute;/* this positions the element in relation to its parent.  This is the only line you need to overlay onto the map.*/
 }
 
+label{
+  font-family: 'Alegreya Sans SC', sans-serif;
 
+}
+
+#location_one_div{
+  width: 300px;
+  z-index: 2;
+  margin-top: -10px;
+}
 
 
 
