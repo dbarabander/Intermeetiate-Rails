@@ -156,10 +156,10 @@ function initialize() {
     }
 
     function getMidPoint(first_hash, second_hash) {
-      lat1 = first_hash['k'];
-      long1 = first_hash['B'];
-      lat2 = second_hash['k'];
-      long2 = second_hash['B'];
+      lat1 = first_hash.lat();
+      long1 = first_hash.lng();
+      lat2 = second_hash.lat();
+      long2 = second_hash.lng();
       midPointLat = (parseFloat(lat1) + parseFloat(lat2))/2;
       midPointLong = (parseFloat(long1) + parseFloat(long2))/2;
       var midPoint = new google.maps.LatLng(midPointLat,midPointLong);
@@ -295,6 +295,6 @@ function handleNoGeolocation(errorFlag) {
 window.onload = function() {
   var script = document.createElement('script');
   script.type = 'text/javascript';
-  script.src = 'http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=initialize&key=AIzaSyBe1AdZQtoOdFvRC5IWoUo_C4F8nqw_QdU';
+  script.src = 'http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=initialize&key=AIzaSyBe1AdZQtoOdFvRC5IWoUo_C4F8nqw_QdU&libraries=places';
   document.body.appendChild(script);
 };
