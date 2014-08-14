@@ -55,6 +55,7 @@ function initialize() {
   function recenter(position){
     var position_lat = position.lat();
     var position_long = position.lng();
+    var latLng = new google.maps.LatLng(position_lat, position_long);
     map.panTo(latLng);
   }
 
