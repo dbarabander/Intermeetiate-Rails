@@ -97,12 +97,6 @@ function initialize() {
 	  marker.setIcon(image);
   });
 
-  // $('#currentLocation').on(':checked', function(){
-  //     $('#location_one').val('');
-  //     $('#location_one').val('My Current Location');
-  //   });
-
-
   $('#currentLocation').change(function(){
     if ($('#currentLocation').is(':checked') == true){
       $('#location_one').data("previous_value", $('#location_one').val());
