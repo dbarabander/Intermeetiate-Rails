@@ -175,7 +175,7 @@ input{
    
 #searchboxes{
   z-index: 1;
-  top : 200px;
+  top : 50px;
   position: absolute; 
 }
 
@@ -378,6 +378,7 @@ label{
 
 
 
+Invalid CSS after "  margin-top:": expected expression (e.g. 1px, bold), was "}"
 
 
 
