@@ -128,9 +128,6 @@ function initialize() {
       removeMarker(markers);
       removeMarker(address1);
       removeMarker(address2);
-
-      console.log(address1);
-      console.log(address2);
       removeMarker(midPointArray);
       markers = [];
       images = [];
@@ -146,12 +143,10 @@ function initialize() {
           geocoder.geocode({'latLng':currentLocation}, function (results, status){
             if (status == google.maps.GeocoderStatus.OK){
               getGeoCodeAddress(results[0].formatted_address);
-              console.log(address1Val);
             }
           });
            var address2Val = $("#location_two").val(); 
            getGeoCodeAddress(address2Val);
-           console.log(address2Val);
         }
     
     else{
