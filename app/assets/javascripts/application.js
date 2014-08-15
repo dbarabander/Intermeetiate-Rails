@@ -106,29 +106,17 @@ function initialize() {
     //slides in the results when the leftcontainer finishes sliding out
   	$('#results').show();
 
-    if ($('#currentLocation').is(':checked')){
-
-          geocoder.geocode({'latLng':currentLocation}, function (results, status){
-            if (status == google.maps.GeocoderStatus.OK){
-              getGeoCodeAddress(results[0].formatted_address);
-            }
-          });
-        }
-    
-    else{
-      var address1Val = $("#location_one").val();  
-      getGeoCodeAddress(address1Val);
-    }
-
-      var address2Val = $("#location_two").val(); 
-
 
     if ($('#searchdiv').hasClass('edit')){
       $('#results li').remove();
 
+
       removeMarker(markers);
       removeMarker(address1);
       removeMarker(address2);
+
+      console.log(address1);
+      console.log(address2);
       removeMarker(midPointArray);
       markers = [];
       images = [];
@@ -136,12 +124,29 @@ function initialize() {
       getGeoCodeAddress(address1Val);
       getGeoCodeAddress(address2Val);
 
-    } else {
-      // getGeoCodeAddress(address1Val);
-      getGeoCodeAddress(address2Val);
-    }
+    } 
 
     $('#searchdiv').removeClass('edit');
+
+    if ($('#currentLocation').is(':checked')){
+
+          geocoder.geocode({'latLng':currentLocation}, function (results, status){
+            if (status == google.maps.GeocoderStatus.OK){
+              getGeoCodeAddress(results[0].formatted_address);
+              console.log(address1Val);
+            }
+          });
+           var address2Val = $("#location_two").val(); 
+           getGeoCodeAddress(address2Val);
+           console.log(address2Val);
+        }
+    
+    else{
+          var address1Val = $("#location_one").val(); 
+          var address2Val = $("#location_two").val();  
+          getGeoCodeAddress(address1Val);
+          getGeoCodeAddress(address2Val);
+    }
 
     function getGeoCodeAddress(address) {
       geocoder.geocode({'address': address}, function(results, status) {
