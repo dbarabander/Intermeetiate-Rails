@@ -20,6 +20,7 @@
 var map;
 var service;
 var currentLocation;
+var geocoder;
 
 function initialize() {
   var address1 = [];
@@ -39,11 +40,11 @@ function initialize() {
     navigator.geolocation.getCurrentPosition(function(position) {
       currentLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
      //  var marker = new google.maps.Marker({
-     //    position: pos,
+     //    position: currentLocation,
      //    map: map,
      //    icon: '/assets/letter_a.png'
    		// });
-     //  marker.setMap(map);
+      // marker.setMap(map);
       map.setCenter(currentLocation);
     }, function() {
       handleNoGeolocation(true);
@@ -105,18 +106,21 @@ function initialize() {
     //slides in the results when the leftcontainer finishes sliding out
   	$('#results').show();
 
-    // if ($('#currentLocation').is(':checked')){
+    if ($('#currentLocation').is(':checked')){
 
-          console.log(currentLocation)
-    // } 
-
-    // else{
-    var address1Val = $("#location_one").val(); 
-    // }          
-
-    //plot the two locations
+          geocoder.geocode({'latLng':currentLocation}, function (results, status){
+            if (status == google.maps.GeocoderStatus.OK){
+              getGeoCodeAddress(results[0].formatted_address);
+            }
+          });
+        }
     
-    var address2Val = $("#location_two").val(); 
+    else{
+      var address1Val = $("#location_one").val();  
+      getGeoCodeAddress(address1Val);
+    }
+
+      var address2Val = $("#location_two").val(); 
 
 
     if ($('#searchdiv').hasClass('edit')){
@@ -128,12 +132,12 @@ function initialize() {
       removeMarker(midPointArray);
       markers = [];
       images = [];
-      console.log(markers);
 
       getGeoCodeAddress(address1Val);
       getGeoCodeAddress(address2Val);
+
     } else {
-      getGeoCodeAddress(address1Val);
+      // getGeoCodeAddress(address1Val);
       getGeoCodeAddress(address2Val);
     }
 
@@ -170,6 +174,7 @@ function initialize() {
         getMidPoint(first_complete_lat_long_hash,second_complete_lat_long_hash);
       }
     }
+
 
     function getMidPoint(first_hash, second_hash) {
       var lat1 = first_hash.lat();
