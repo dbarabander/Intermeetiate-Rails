@@ -97,6 +97,26 @@ function initialize() {
 	  marker.setIcon(image);
   });
 
+  // $('#currentLocation').on(':checked', function(){
+  //     $('#location_one').val('');
+  //     $('#location_one').val('My Current Location');
+  //   });
+
+
+  $('#currentLocation').change(function(){
+    if ($('#currentLocation').is(':checked') == true){
+      $('#location_one').data("previous_value", $('#location_one').val());
+      $('#location_one').val('My Current Location').prop('disabled',true);
+    }
+    else{
+
+      $('#location_one').val($('#location_one').data("previous_value")).prop('disabled', false);
+    }
+
+    });
+
+     
+
   $('#search').click(function() {
 	  $('#searchdiv').addClass('searched');
 
@@ -128,8 +148,7 @@ function initialize() {
 
     $('#searchdiv').removeClass('edit');
 
-    if ($('#currentLocation').is(':checked')){
-
+    if ($('#currentLocation').is(':checked') || $('#location_one').val().toLowerCase()=='my current location' ){
           geocoder.geocode({'latLng':currentLocation}, function (results, status){
             if (status == google.maps.GeocoderStatus.OK){
               getGeoCodeAddress(results[0].formatted_address);
