@@ -13,3 +13,387 @@
  *= require_tree .
  *= require_self
  */
+
+/*
+#map-canvas *, #map-canvas *:before, #map-canvas *:after {
+    -webkit-transform: none !important; 
+}*/
+
+header{
+  background-color: #2E5462;
+  color: #FF845C;
+  height: 80px;
+  padding-left: 40px;
+  font-family: 'Alegreya Sans SC', sans-serif;
+}
+
+header h1{
+  padding-top: 20px;
+  font-size: 200%;
+  cursor: pointer; 
+}
+
+header p{
+  padding-top: 5px;
+  font-size: 75%;
+}
+
+#logo{
+  width: 192px;
+  height: auto;
+  text-align: center;
+}
+
+body{
+  height: 100%; 
+  background-color: RGBA(22, 48, 56, 1);  
+}
+
+#wrapper{
+  height: 550px;
+  position: relative;
+}
+
+#map-canvas{
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+/*  background: asset_url('/assets/loading.gif');
+*/  /*background-image:url('/assets/loading.gif');*/
+  overflow: hidden;
+}
+
+footer {
+  background-color: #2E5462;
+  color: #00A4A3;
+/*  position: fixed;
+*/  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  overflow: hidden;
+  font-size: 15px;
+  line-height: 50px;
+  padding: 0 30px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  min-width: 800px;
+   font-family: 'Alegreya Sans SC', sans-serif;
+}
+
+footer ul{
+    padding-top: 19px;
+}
+
+#search{
+  width: 120px;
+  height: 40px;
+  top: 195px;
+  left: 180px;
+  z-index: 1;
+  background-color: RGBA(255, 132, 92, .9);
+  text-align: center;
+  position: relative;
+}
+
+#search p{
+  padding-top: 12px;
+  color: #2E5462;
+  font-family: 'Alegreya Sans SC', sans-serif;
+}
+
+#search:active{
+  width: 120px;
+    height: 40px;
+    top: 195px;
+    left: 180px;
+    background-color: RGBA(255, 132, 92, 1);
+    text-align: center;  
+    position: relative;  
+}
+
+
+.rightfooter{
+  display: inline;
+  float: right;
+  padding-right: 20px;
+}
+
+.leftfooter{
+  display: inline;
+  float: left;
+}
+
+.rightfooter a:visited{
+     text-decoration: none;
+     color: #00B6B5;
+}
+
+.rightfooter a:link {
+     text-decoration: none;
+     color: #00B6B5;
+}
+
+.rightfooter a:hover{
+     text-decoration: none;
+     color: #FF845C;
+}
+
+.rightfooter a:active{ 
+     text-decoration: none;
+     color: #00B6B5;
+}
+
+
+.controls {
+    margin-top: 16px;
+    border: 1px solid transparent;
+    border-radius: 2px 0 0 2px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    height: 32px;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      }
+
+#location_one, #location_two, #what_do {
+  background-color: #fff;
+  padding: 0 11px 0 13px;
+  width: 300px;
+  font-weight: 300;
+  text-overflow: ellipsis;
+  display: inline-block;
+}
+
+input{
+      font-size: 15px;
+    font-family: 'Alegreya Sans SC', sans-serif; 
+}   
+
+/*#location_one{
+  left: 100px;
+  top: -60px;
+}*/
+
+#location_two{
+  /*left: 100px;
+  top: -20px;*/
+  margin-top: 5px;
+}
+
+/*#what_do{*/
+/*  left: 100px;
+  top: 20px;*/
+/*margin-top: 30px;
+*/
+    
+   
+#searchboxes{
+  z-index: 1;
+  top : 50px;
+/*  position: absolute; 
+*/}
+
+#what_do:focus {
+  border-color: #4d90fe;
+  margin-left: -1px;
+  padding-left: 14px;  /* Regular padding-left + 1. */
+  width: 301px;
+}
+
+#location_one:focus{
+  border-color: #4d90fe;
+  margin-left: -1px;
+  padding-left: 14px;  /* Regular padding-left + 1. */
+  width: 301px;
+}
+
+#location_two:focus{
+  border-color: #4d90fe;
+  margin-left: -1px;
+  padding-left: 14px;  /* Regular padding-left + 1. */
+  width: 301px;
+}
+
+#type-selector {
+  color: #fff;
+  background-color: #4d90fe;
+  padding: 5px 11px 0px 11px;
+}
+
+#type-selector label {
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+}
+
+
+#results {
+  height: 300px;
+  width: 400px;
+  background-color: RGBA(248, 248, 248,.9);
+  display: none;
+  z-index: 1;
+  /*top : 140px;
+  left: 100px;
+  position: absolute;*/
+  font-family: 'Alegreya Sans SC', sans-serif;
+  color: #00B6B5;
+  overflow: auto;
+  border: 1px solid black;
+}
+
+#results li p{
+  font-weight: bold;
+  font-size: 25px;
+  padding-bottom: 4px;
+  padding-top: 4px;
+  border-bottom: 1px solid black;
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+} 
+
+
+
+#results h1{
+  border-bottom: 1px solid black;
+  padding-bottom: 10px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#back {
+  display: inline-block;
+  width: 13%;
+  background-color: RGBA(255, 132, 92, .9);
+  text-align: center;  
+  height: 25px;
+  z-index: 1;
+/*  position: absolute;
+*/  margin-left: 4px;
+  margin-top: 4px;
+  margin-bottom: 2px;
+}
+
+#back:active{
+  width: 13%;
+background-color: RGBA(255, 132, 92, 1);
+  text-align: center;  
+  height: 25px;
+  z-index: 1;
+/*  position: absolute;
+*/  margin-left: 4px;
+  margin-top: 4px;
+}
+
+#back p {
+  color: #2E5462;
+  font-family: 'Alegreya Sans SC', sans-serif;
+  font-size: 10px;
+  margin-top: 7px;
+}
+
+#results li{
+  
+  width: 390px;
+  font-size: 20px;
+  margin-left: 5px;
+  border-bottom: 1px solid black;
+  padding-bottom: 10px;
+/*  padding-top: 10px;
+*/}
+
+
+.name{
+  padding-left: 18px;
+  width: 100%;
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
+.price{
+  font-size: 15px;
+  width: auto;
+}
+
+.rating{
+  font-size: 15px;
+  width: auto;
+  padding-left: 10px;
+}
+
+.address{
+  font-size: 15px;
+  width: auto;
+  padding-left: 10px;
+}
+
+.left{
+  width: 70%;
+  text-align: left;
+}
+
+.right{
+  width: 25%;
+  text-align: right;
+}
+
+.photo{
+  width: 65px;
+  height: 65px;
+}
+
+.photo img{
+  width: 100%;
+  height: 100%;
+  background-color: RGBA(231, 231, 231, 1);
+  padding: 5px;
+  margin-top: 5px;
+
+}
+
+#results div{
+  display: inline-block;
+}
+
+
+/*#loading{
+  height: 600px;
+  width: 100%;
+  z-index: 0;
+  position: relative;
+}
+*/
+/*#leftcontainer{
+  z-index: 1;
+  position: relative;
+}*/
+
+#maincontainer{
+  z-index: 1;
+  top:100px;
+  left:10%;
+  width: 30%;
+  position: absolute;/* this positions the element in relation to its parent.  This is the only line you need to overlay onto the map.*/
+}
+
+label{
+  font-family: 'Alegreya Sans SC', sans-serif;
+
+}
+
+#location_one_div{
+  width: 300px;
+  z-index: 1;
+  margin-top: -10px;
+}
+
+
+
+
+
+

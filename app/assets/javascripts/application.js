@@ -115,10 +115,15 @@ function initialize() {
 	  $('#searchdiv').addClass('searched');
 
     //slide search boxes out and display results
-    $('#leftcontainer').hide();
+    // $('#leftcontainer').hide();
 
     //slides in the results when the leftcontainer finishes sliding out
-  	$('#results').show();
+  	// $('#results').show();
+
+    $('#leftcontainer').hide('slide', {direction: 'right'}, 700, function(){
+    //slides in the results when the leftcontainer finishes sliding out
+    $('#results').show('slide', {direction: 'right'}, 700);
+    });
 
 
     if ($('#searchdiv').hasClass('edit')){
