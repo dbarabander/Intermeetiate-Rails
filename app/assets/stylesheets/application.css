@@ -58,8 +58,9 @@ body{
   height: 100%;
   width: 100%;
   z-index: 0;
-/*  background: asset_url('/assets/loading.gif');
-*/  /*background-image:url('/assets/loading.gif');*/
+  background-image:url('/assets/loading.gif');
+  background-repeat: no-repeat;
+  background-position: center;
   overflow: hidden;
 }
 
