@@ -16,6 +16,8 @@
 //= require jquery-ui/core
 //= require jquery-ui/effect.all
 //= require_tree .
+//= depend_on_asset "point.png"
+//= depend_on_asset "midpoint.png"
 
 var map;
 var service;
@@ -86,7 +88,7 @@ function initialize() {
   $('ul').on('mouseover', 'li', function() {
     var markerId = $(this).attr('id');
     var marker = markers[markerId];
-    marker.setIcon("assets/point.png");
+    marker.setIcon("<%= asset_path 'point.png' %>");
     marker.setVisible(true)
   });
 
@@ -207,7 +209,7 @@ function initialize() {
     }
 
     function drawMidPoint(midPoint){
-      var image = '/assets/midpoint.png';
+      var image = "<%= asset_path 'midpoint.png' %>";
       var marker = new google.maps.Marker({
         position: midPoint,
         map: map,
@@ -258,7 +260,7 @@ function initialize() {
       images.push(image);
 
       google.maps.event.addListener(marker, 'mouseover', function() {
-        marker.setIcon("/assets/point.png");
+        marker.setIcon("<%= asset_path 'point.png' %>");
       });
 
       google.maps.event.addListener(marker, 'mouseout', function() {

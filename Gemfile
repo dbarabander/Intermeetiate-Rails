@@ -14,7 +14,7 @@ gem 'rails_12factor', group: :production
 # end
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails', '4.0.2'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -31,5 +31,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'jquery-ui-rails'
+
+gem 'sprockets', '2.11.0'
+gem 'sprockets_better_errors'
 
 ruby "2.1.1"
